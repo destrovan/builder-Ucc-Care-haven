@@ -68,18 +68,8 @@ const App = () => (
           } />
 
           {/* Support & Reporting Routes */}
-          <Route path="/anonymous-report" element={
-            <PlaceholderPage
-              title="Anonymous Support"
-              description="Confidential reporting for students who prefer to remain anonymous"
-            />
-          } />
-          <Route path="/report" element={
-            <PlaceholderPage
-              title="Student Support Request"
-              description="Submit a confidential report to connect with counseling services"
-            />
-          } />
+          <Route path="/anonymous-report" element={<AnonymousReport />} />
+          <Route path="/report" element={<AuthenticatedReport />} />
           <Route path="/report-status" element={
             <PlaceholderPage
               title="Report Status"
