@@ -57,6 +57,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Mental health specific theme colors
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        "calm-blue": "hsl(var(--calm-blue))",
+        "trust-teal": "hsl(var(--trust-teal))",
+        "comfort-lavender": "hsl(var(--comfort-lavender))",
+        "hope-green": "hsl(var(--hope-green))",
       },
       borderRadius: {
         lg: "var(--radius)",
