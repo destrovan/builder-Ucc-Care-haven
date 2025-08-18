@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Construction } from "lucide-react";
 
@@ -10,11 +16,11 @@ interface PlaceholderPageProps {
   backLinkText?: string;
 }
 
-export default function PlaceholderPage({ 
-  title, 
-  description, 
-  backLink = "/", 
-  backLinkText = "Back to Home" 
+export default function PlaceholderPage({
+  title,
+  description,
+  backLink = "/",
+  backLinkText = "Back to Home",
 }: PlaceholderPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-calm-blue/20 to-trust-teal/20 flex items-center justify-center p-4">
@@ -30,9 +36,10 @@ export default function PlaceholderPage({
         </CardHeader>
         <CardContent className="text-center space-y-4">
           <p className="text-sm text-muted-foreground">
-            This page is currently under development. Please check back later or continue building this feature.
+            This page is currently under development. Please check back later or
+            continue building this feature.
           </p>
-          
+
           <Link to={backLink}>
             <Button className="w-full" variant="outline">
               <ArrowLeft className="w-4 h-4 mr-2" />

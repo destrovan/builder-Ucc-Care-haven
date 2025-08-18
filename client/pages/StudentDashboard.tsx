@@ -1,13 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  TrendingUp, 
-  MessageCircle, 
-  BookOpen, 
+import {
+  Heart,
+  TrendingUp,
+  MessageCircle,
+  BookOpen,
   Calendar,
   Plus,
   FileText,
@@ -17,7 +23,7 @@ import {
   Meh,
   Frown,
   LogOut,
-  User
+  User,
 } from "lucide-react";
 
 export default function StudentDashboard() {
@@ -42,10 +48,12 @@ export default function StudentDashboard() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">UCC Care</h1>
-                <p className="text-sm text-muted-foreground">Student Dashboard</p>
+                <p className="text-sm text-muted-foreground">
+                  Student Dashboard
+                </p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="sm">
                 <User className="w-4 h-4 mr-2" />
@@ -65,8 +73,12 @@ export default function StudentDashboard() {
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-2">Welcome back, Student</h2>
-          <p className="text-muted-foreground">Here's how you're doing with your wellness journey</p>
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            Welcome back, Student
+          </h2>
+          <p className="text-muted-foreground">
+            Here's how you're doing with your wellness journey
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -79,7 +91,9 @@ export default function StudentDashboard() {
                   <Plus className="w-5 h-5 text-primary" />
                   <span>Quick Actions</span>
                 </CardTitle>
-                <CardDescription>Take care of your mental health today</CardDescription>
+                <CardDescription>
+                  Take care of your mental health today
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-3 gap-4">
@@ -87,12 +101,18 @@ export default function StudentDashboard() {
                     <TrendingUp className="w-6 h-6" />
                     <span>Log Mood</span>
                   </Button>
-                  <Button variant="outline" className="h-20 flex flex-col space-y-2">
+                  <Button
+                    variant="outline"
+                    className="h-20 flex flex-col space-y-2"
+                  >
                     <FileText className="w-6 h-6" />
                     <span>Write Journal</span>
                   </Button>
                   <Link to="/report">
-                    <Button variant="outline" className="h-20 flex flex-col space-y-2 w-full">
+                    <Button
+                      variant="outline"
+                      className="h-20 flex flex-col space-y-2 w-full"
+                    >
                       <MessageCircle className="w-6 h-6" />
                       <span>Get Support</span>
                     </Button>
@@ -108,24 +128,35 @@ export default function StudentDashboard() {
                   <TrendingUp className="w-5 h-5 text-hope-green" />
                   <span>Mood Tracking</span>
                 </CardTitle>
-                <CardDescription>Your emotional wellness overview</CardDescription>
+                <CardDescription>
+                  Your emotional wellness overview
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">This week's progress</span>
-                    <Badge variant="secondary">{weeklyProgress}% complete</Badge>
+                    <span className="text-sm font-medium">
+                      This week's progress
+                    </span>
+                    <Badge variant="secondary">
+                      {weeklyProgress}% complete
+                    </Badge>
                   </div>
                   <Progress value={weeklyProgress} className="h-2" />
-                  
+
                   <div className="space-y-3">
                     <h4 className="font-medium">Recent Mood Entries</h4>
                     {recentMoods.map((entry, index) => {
                       const IconComponent = entry.icon;
                       return (
-                        <div key={index} className="flex items-center justify-between py-2">
+                        <div
+                          key={index}
+                          className="flex items-center justify-between py-2"
+                        >
                           <div className="flex items-center space-x-3">
-                            <IconComponent className={`w-5 h-5 ${entry.color}`} />
+                            <IconComponent
+                              className={`w-5 h-5 ${entry.color}`}
+                            />
                             <span className="text-sm">{entry.date}</span>
                           </div>
                           <Badge variant="outline" className="capitalize">
@@ -135,7 +166,7 @@ export default function StudentDashboard() {
                       );
                     })}
                   </div>
-                  
+
                   <Button variant="ghost" className="w-full mt-4">
                     <Calendar className="w-4 h-4 mr-2" />
                     View Full History
@@ -151,30 +182,38 @@ export default function StudentDashboard() {
                   <FileText className="w-5 h-5 text-trust-teal" />
                   <span>Journal Entries</span>
                 </CardTitle>
-                <CardDescription>Your private thoughts and reflections</CardDescription>
+                <CardDescription>
+                  Your private thoughts and reflections
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="border rounded-lg p-4 bg-muted/20">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium">Today's Entry</span>
-                      <span className="text-xs text-muted-foreground">2 hours ago</span>
+                      <span className="text-xs text-muted-foreground">
+                        2 hours ago
+                      </span>
                     </div>
                     <p className="text-sm text-muted-foreground line-clamp-2">
-                      Feeling better today after the counseling session. The breathing exercises really helped...
+                      Feeling better today after the counseling session. The
+                      breathing exercises really helped...
                     </p>
                   </div>
-                  
+
                   <div className="border rounded-lg p-4 bg-muted/20">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium">Yesterday</span>
-                      <span className="text-xs text-muted-foreground">1 day ago</span>
+                      <span className="text-xs text-muted-foreground">
+                        1 day ago
+                      </span>
                     </div>
                     <p className="text-sm text-muted-foreground line-clamp-2">
-                      Had a difficult day with exams approaching. Anxiety levels were high but managed to...
+                      Had a difficult day with exams approaching. Anxiety levels
+                      were high but managed to...
                     </p>
                   </div>
-                  
+
                   <Button variant="ghost" className="w-full">
                     <FileText className="w-4 h-4 mr-2" />
                     View All Entries
@@ -200,11 +239,13 @@ export default function StudentDashboard() {
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span className="text-sm">Counselor Available</span>
                   </div>
-                  
+
                   <div className="border rounded-lg p-3 bg-muted/20">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium">Active Report</span>
-                      <Badge variant="outline" className="text-xs">In Progress</Badge>
+                      <Badge variant="outline" className="text-xs">
+                        In Progress
+                      </Badge>
                     </div>
                     <p className="text-xs text-muted-foreground mb-2">
                       Your counselor has responded to your report
@@ -214,7 +255,7 @@ export default function StudentDashboard() {
                       View Update
                     </Button>
                   </div>
-                  
+
                   <Button className="w-full" size="sm">
                     <Plus className="w-4 h-4 mr-2" />
                     New Report
@@ -233,27 +274,46 @@ export default function StudentDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <Button variant="ghost" className="w-full justify-start text-left h-auto p-3">
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-left h-auto p-3"
+                  >
                     <div>
-                      <div className="font-medium text-sm">Breathing Exercises</div>
-                      <div className="text-xs text-muted-foreground">5-minute guided session</div>
+                      <div className="font-medium text-sm">
+                        Breathing Exercises
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        5-minute guided session
+                      </div>
                     </div>
                   </Button>
-                  
-                  <Button variant="ghost" className="w-full justify-start text-left h-auto p-3">
+
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-left h-auto p-3"
+                  >
                     <div>
-                      <div className="font-medium text-sm">Study Stress Tips</div>
-                      <div className="text-xs text-muted-foreground">Managing exam anxiety</div>
+                      <div className="font-medium text-sm">
+                        Study Stress Tips
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Managing exam anxiety
+                      </div>
                     </div>
                   </Button>
-                  
-                  <Button variant="ghost" className="w-full justify-start text-left h-auto p-3">
+
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-left h-auto p-3"
+                  >
                     <div>
                       <div className="font-medium text-sm">Sleep Hygiene</div>
-                      <div className="text-xs text-muted-foreground">Better rest for better health</div>
+                      <div className="text-xs text-muted-foreground">
+                        Better rest for better health
+                      </div>
                     </div>
                   </Button>
-                  
+
                   <Link to="/resources">
                     <Button variant="outline" className="w-full mt-4" size="sm">
                       <BookOpen className="w-4 h-4 mr-2" />
@@ -274,7 +334,8 @@ export default function StudentDashboard() {
               </CardHeader>
               <CardContent>
                 <p className="text-xs text-muted-foreground">
-                  Your data is encrypted and confidential. Only you and your assigned counselors can access your information.
+                  Your data is encrypted and confidential. Only you and your
+                  assigned counselors can access your information.
                 </p>
               </CardContent>
             </Card>

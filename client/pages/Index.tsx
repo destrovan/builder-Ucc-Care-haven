@@ -1,21 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  Shield, 
-  Users, 
-  MessageCircle, 
-  BookOpen, 
-  TrendingUp, 
-  Lock, 
+import {
+  Heart,
+  Shield,
+  Users,
+  MessageCircle,
+  BookOpen,
+  TrendingUp,
+  Lock,
   User,
   UserCheck,
   Settings,
   Phone,
   Mail,
-  Clock
+  Clock,
 } from "lucide-react";
 
 export default function Index() {
@@ -31,15 +37,37 @@ export default function Index() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-foreground">UCC Care</h1>
-                <p className="text-sm text-muted-foreground">Student Mental Health & Wellness</p>
+                <p className="text-sm text-muted-foreground">
+                  Student Mental Health & Wellness
+                </p>
               </div>
             </div>
-            
+
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-              <a href="#services" className="text-muted-foreground hover:text-foreground transition-colors">Services</a>
-              <a href="#resources" className="text-muted-foreground hover:text-foreground transition-colors">Resources</a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+              <a
+                href="#about"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                About
+              </a>
+              <a
+                href="#services"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Services
+              </a>
+              <a
+                href="#resources"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Resources
+              </a>
+              <a
+                href="#contact"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Contact
+              </a>
             </nav>
           </div>
         </div>
@@ -56,15 +84,19 @@ export default function Index() {
             <span className="text-primary block">Matters</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            UCC Care provides a safe, confidential platform for students to access mental health support, 
-            track their wellness journey, and connect with professional counselors.
+            UCC Care provides a safe, confidential platform for students to
+            access mental health support, track their wellness journey, and
+            connect with professional counselors.
           </p>
-          
+
           {/* Emergency Notice */}
           <div className="bg-warning/10 border border-warning/20 rounded-lg p-4 mb-8 max-w-2xl mx-auto">
             <div className="flex items-center justify-center space-x-2 text-warning-foreground">
               <Phone className="w-5 h-5" />
-              <p className="font-medium">Crisis Support: Call 988 (Suicide & Crisis Lifeline) - Available 24/7</p>
+              <p className="font-medium">
+                Crisis Support: Call 988 (Suicide & Crisis Lifeline) - Available
+                24/7
+              </p>
             </div>
           </div>
         </div>
@@ -75,7 +107,7 @@ export default function Index() {
         <h3 className="text-3xl font-bold text-center text-foreground mb-12">
           Choose Your Access Level
         </h3>
-        
+
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Student Access */}
           <Card className="relative overflow-hidden border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
@@ -86,7 +118,8 @@ export default function Index() {
               </div>
               <CardTitle className="text-2xl">Students</CardTitle>
               <CardDescription>
-                Access your personal wellness dashboard, mood tracking, and confidential support
+                Access your personal wellness dashboard, mood tracking, and
+                confidential support
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -108,7 +141,7 @@ export default function Index() {
                   <span className="text-sm">Anonymous Options Available</span>
                 </div>
               </div>
-              
+
               <div className="pt-4 space-y-3">
                 <Link to="/student/login">
                   <Button className="w-full bg-primary hover:bg-primary/90">
@@ -121,7 +154,10 @@ export default function Index() {
                   </Button>
                 </Link>
                 <Link to="/anonymous-report">
-                  <Button variant="ghost" className="w-full text-muted-foreground">
+                  <Button
+                    variant="ghost"
+                    className="w-full text-muted-foreground"
+                  >
                     Anonymous Support
                   </Button>
                 </Link>
@@ -138,7 +174,8 @@ export default function Index() {
               </div>
               <CardTitle className="text-2xl">Counselors</CardTitle>
               <CardDescription>
-                Manage cases, communicate with students, and provide professional support
+                Manage cases, communicate with students, and provide
+                professional support
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -160,7 +197,7 @@ export default function Index() {
                   <span className="text-sm">Private Notes & Updates</span>
                 </div>
               </div>
-              
+
               <div className="pt-4">
                 <Link to="/counselor/login">
                   <Button className="w-full bg-hope-green text-white hover:bg-hope-green/90">
@@ -202,7 +239,7 @@ export default function Index() {
                   <span className="text-sm">Platform Configuration</span>
                 </div>
               </div>
-              
+
               <div className="pt-4">
                 <Link to="/admin/login">
                   <Button className="w-full bg-trust-teal text-white hover:bg-trust-teal/90">
@@ -221,38 +258,44 @@ export default function Index() {
           <h3 className="text-3xl font-bold text-center text-foreground mb-12">
             Comprehensive Mental Health Support
           </h3>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Shield className="w-8 h-8 text-primary" />
               </div>
-              <h4 className="text-lg font-semibold mb-2">Confidential & Secure</h4>
+              <h4 className="text-lg font-semibold mb-2">
+                Confidential & Secure
+              </h4>
               <p className="text-muted-foreground text-sm">
-                End-to-end encryption and strict privacy protocols protect your information
+                End-to-end encryption and strict privacy protocols protect your
+                information
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 mx-auto bg-hope-green/10 rounded-full flex items-center justify-center mb-4">
                 <TrendingUp className="w-8 h-8 text-hope-green" />
               </div>
               <h4 className="text-lg font-semibold mb-2">Mood Tracking</h4>
               <p className="text-muted-foreground text-sm">
-                Monitor your emotional wellbeing with daily mood logs and insights
+                Monitor your emotional wellbeing with daily mood logs and
+                insights
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 mx-auto bg-trust-teal/10 rounded-full flex items-center justify-center mb-4">
                 <MessageCircle className="w-8 h-8 text-trust-teal" />
               </div>
-              <h4 className="text-lg font-semibold mb-2">Professional Support</h4>
+              <h4 className="text-lg font-semibold mb-2">
+                Professional Support
+              </h4>
               <p className="text-muted-foreground text-sm">
                 Connect with qualified counselors for personalized guidance
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 mx-auto bg-comfort-lavender/10 rounded-full flex items-center justify-center mb-4">
                 <BookOpen className="w-8 h-8 text-primary" />
@@ -278,10 +321,11 @@ export default function Index() {
                 <h4 className="text-lg font-semibold">UCC Care</h4>
               </div>
               <p className="text-muted-foreground text-sm">
-                Supporting student mental health and wellness through technology and compassionate care.
+                Supporting student mental health and wellness through technology
+                and compassionate care.
               </p>
             </div>
-            
+
             <div>
               <h5 className="font-semibold mb-4">Emergency Resources</h5>
               <div className="space-y-2 text-sm">
@@ -299,7 +343,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h5 className="font-semibold mb-4">Support Hours</h5>
               <div className="space-y-2 text-sm text-muted-foreground">
@@ -309,9 +353,12 @@ export default function Index() {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 UCC Care. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>
+              &copy; 2024 UCC Care. All rights reserved. | Privacy Policy |
+              Terms of Service
+            </p>
           </div>
         </div>
       </footer>
