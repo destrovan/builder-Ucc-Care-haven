@@ -27,45 +27,13 @@ export default function App() {
             <Route path="/" element={<Index />} />
 
             {/* Student Routes */}
-            <Route
-              path="/student/login"
-              element={
-                <PlaceholderPage
-                  title="Student Login"
-                  description="Secure login for registered students to access their wellness dashboard"
-                />
-              }
-            />
-            <Route
-              path="/student/register"
-              element={
-                <PlaceholderPage
-                  title="Student Registration"
-                  description="Create a new student account to start your wellness journey"
-                />
-              }
-            />
+            <Route path="/student/login" element={<StudentLogin />} />
+            <Route path="/student/register" element={<StudentRegistration />} />
             <Route path="/student/dashboard" element={<StudentDashboard />} />
 
             {/* Counselor Routes */}
-            <Route
-              path="/counselor/login"
-              element={
-                <PlaceholderPage
-                  title="Counselor Login"
-                  description="Secure access for professional counselors to manage student cases"
-                />
-              }
-            />
-            <Route
-              path="/counselor/dashboard"
-              element={
-                <PlaceholderPage
-                  title="Counselor Dashboard"
-                  description="Case management interface for mental health professionals"
-                />
-              }
-            />
+            <Route path="/counselor/login" element={<CounselorLogin />} />
+            <Route path="/counselor/dashboard" element={<CounselorDashboard />} />
 
             {/* Admin Routes */}
             <Route
