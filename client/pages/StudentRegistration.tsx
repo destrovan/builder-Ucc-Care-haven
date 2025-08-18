@@ -1,25 +1,37 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  ArrowLeft, 
-  Eye, 
-  EyeOff, 
-  UserPlus, 
+import {
+  Heart,
+  ArrowLeft,
+  Eye,
+  EyeOff,
+  UserPlus,
   Shield,
   Check,
   AlertCircle,
   GraduationCap,
   Mail,
-  Phone
+  Phone,
 } from "lucide-react";
 
 export default function StudentRegistration() {
@@ -27,7 +39,7 @@ export default function StudentRegistration() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // Form data
   const [formData, setFormData] = useState({
     firstName: "",
@@ -43,16 +55,22 @@ export default function StudentRegistration() {
     confirmPassword: "",
     agreeTerms: false,
     agreePrivacy: false,
-    consentCounseling: false
+    consentCounseling: false,
   });
 
   const updateFormData = (field: string, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const validateStep1 = () => {
-    return formData.firstName && formData.lastName && formData.email && 
-           formData.studentId && formData.year && formData.program;
+    return (
+      formData.firstName &&
+      formData.lastName &&
+      formData.email &&
+      formData.studentId &&
+      formData.year &&
+      formData.program
+    );
   };
 
   const validateStep2 = () => {
@@ -60,15 +78,20 @@ export default function StudentRegistration() {
   };
 
   const validateStep3 = () => {
-    return formData.password && formData.confirmPassword && 
-           formData.password === formData.confirmPassword &&
-           formData.password.length >= 8 &&
-           formData.agreeTerms && formData.agreePrivacy && formData.consentCounseling;
+    return (
+      formData.password &&
+      formData.confirmPassword &&
+      formData.password === formData.confirmPassword &&
+      formData.password.length >= 8 &&
+      formData.agreeTerms &&
+      formData.agreePrivacy &&
+      formData.consentCounseling
+    );
   };
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    
+
     // Simulate registration process
     setTimeout(() => {
       setIsLoading(false);
@@ -91,10 +114,12 @@ export default function StudentRegistration() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">UCC Care</h1>
-                <p className="text-sm text-muted-foreground">Student Registration</p>
+                <p className="text-sm text-muted-foreground">
+                  Student Registration
+                </p>
               </div>
             </Link>
-            
+
             <Link to="/">
               <Button variant="outline" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -110,7 +135,9 @@ export default function StudentRegistration() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium">Step {step} of 3</span>
-            <span className="text-sm text-muted-foreground">{Math.round(progress)}% complete</span>
+            <span className="text-sm text-muted-foreground">
+              {Math.round(progress)}% complete
+            </span>
           </div>
           <Progress value={progress} className="h-2" />
         </div>
@@ -119,7 +146,8 @@ export default function StudentRegistration() {
         <Alert className="mb-6 border-primary/20 bg-primary/5">
           <Shield className="h-4 w-4" />
           <AlertDescription>
-            Your information is secure and confidential. We only collect what's necessary to provide you with mental health support.
+            Your information is secure and confidential. We only collect what's
+            necessary to provide you with mental health support.
           </AlertDescription>
         </Alert>
 
@@ -130,7 +158,8 @@ export default function StudentRegistration() {
             </div>
             <CardTitle className="text-2xl">Join UCC Care</CardTitle>
             <CardDescription>
-              Create your account to access confidential mental health support and wellness resources
+              Create your account to access confidential mental health support
+              and wellness resources
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -141,25 +170,29 @@ export default function StudentRegistration() {
                   <GraduationCap className="w-5 h-5 mr-2" />
                   Personal & Academic Information
                 </h3>
-                
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="firstName">First Name *</Label>
                     <Input
                       id="firstName"
                       value={formData.firstName}
-                      onChange={(e) => updateFormData("firstName", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("firstName", e.target.value)
+                      }
                       placeholder="Enter your first name"
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name *</Label>
                     <Input
                       id="lastName"
                       value={formData.lastName}
-                      onChange={(e) => updateFormData("lastName", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("lastName", e.target.value)
+                      }
                       placeholder="Enter your last name"
                       required
                     />
@@ -184,12 +217,14 @@ export default function StudentRegistration() {
                     <Input
                       id="studentId"
                       value={formData.studentId}
-                      onChange={(e) => updateFormData("studentId", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("studentId", e.target.value)
+                      }
                       placeholder="Enter your student ID"
                       required
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
                     <Input
@@ -205,7 +240,10 @@ export default function StudentRegistration() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>Academic Year *</Label>
-                    <Select value={formData.year} onValueChange={(value) => updateFormData("year", value)}>
+                    <Select
+                      value={formData.year}
+                      onValueChange={(value) => updateFormData("year", value)}
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select your year" />
                       </SelectTrigger>
@@ -214,27 +252,31 @@ export default function StudentRegistration() {
                         <SelectItem value="second">Second Year</SelectItem>
                         <SelectItem value="third">Third Year</SelectItem>
                         <SelectItem value="fourth">Fourth Year</SelectItem>
-                        <SelectItem value="graduate">Graduate Student</SelectItem>
+                        <SelectItem value="graduate">
+                          Graduate Student
+                        </SelectItem>
                         <SelectItem value="postgrad">Postgraduate</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="program">Program/Major *</Label>
                     <Input
                       id="program"
                       value={formData.program}
-                      onChange={(e) => updateFormData("program", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("program", e.target.value)
+                      }
                       placeholder="e.g., Computer Science, Psychology"
                       required
                     />
                   </div>
                 </div>
 
-                <Button 
-                  onClick={() => setStep(2)} 
-                  className="w-full" 
+                <Button
+                  onClick={() => setStep(2)}
+                  className="w-full"
                   disabled={!validateStep1()}
                 >
                   Continue to Emergency Contact
@@ -250,43 +292,52 @@ export default function StudentRegistration() {
                   Emergency Contact Information
                 </h3>
                 <p className="text-sm text-muted-foreground">
-                  This information is kept confidential and only used in case of emergency situations.
+                  This information is kept confidential and only used in case of
+                  emergency situations.
                 </p>
-                
+
                 <div className="space-y-2">
-                  <Label htmlFor="emergencyContact">Emergency Contact Name *</Label>
+                  <Label htmlFor="emergencyContact">
+                    Emergency Contact Name *
+                  </Label>
                   <Input
                     id="emergencyContact"
                     value={formData.emergencyContact}
-                    onChange={(e) => updateFormData("emergencyContact", e.target.value)}
+                    onChange={(e) =>
+                      updateFormData("emergencyContact", e.target.value)
+                    }
                     placeholder="Full name of emergency contact"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="emergencyPhone">Emergency Contact Phone *</Label>
+                  <Label htmlFor="emergencyPhone">
+                    Emergency Contact Phone *
+                  </Label>
                   <Input
                     id="emergencyPhone"
                     type="tel"
                     value={formData.emergencyPhone}
-                    onChange={(e) => updateFormData("emergencyPhone", e.target.value)}
+                    onChange={(e) =>
+                      updateFormData("emergencyPhone", e.target.value)
+                    }
                     placeholder="(XXX) XXX-XXXX"
                     required
                   />
                 </div>
 
                 <div className="flex gap-3">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={() => setStep(1)}
                     className="flex-1"
                   >
                     Back
                   </Button>
-                  <Button 
-                    onClick={() => setStep(3)} 
-                    className="flex-1" 
+                  <Button
+                    onClick={() => setStep(3)}
+                    className="flex-1"
                     disabled={!validateStep2()}
                   >
                     Continue to Security
@@ -302,7 +353,7 @@ export default function StudentRegistration() {
                   <Shield className="w-5 h-5 mr-2" />
                   Security & Privacy Consent
                 </h3>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="password">Create Password *</Label>
                   <div className="relative">
@@ -310,7 +361,9 @@ export default function StudentRegistration() {
                       id="password"
                       type={showPassword ? "text" : "password"}
                       value={formData.password}
-                      onChange={(e) => updateFormData("password", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("password", e.target.value)
+                      }
                       placeholder="Create a secure password"
                       className="pr-10"
                       required
@@ -322,7 +375,11 @@ export default function StudentRegistration() {
                       className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showPassword ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
                     </Button>
                   </div>
                   <p className="text-xs text-muted-foreground">
@@ -337,7 +394,9 @@ export default function StudentRegistration() {
                       id="confirmPassword"
                       type={showConfirmPassword ? "text" : "password"}
                       value={formData.confirmPassword}
-                      onChange={(e) => updateFormData("confirmPassword", e.target.value)}
+                      onChange={(e) =>
+                        updateFormData("confirmPassword", e.target.value)
+                      }
                       placeholder="Confirm your password"
                       className="pr-10"
                       required
@@ -347,63 +406,102 @@ export default function StudentRegistration() {
                       variant="ghost"
                       size="sm"
                       className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
                     >
-                      {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      {showConfirmPassword ? (
+                        <EyeOff className="w-4 h-4" />
+                      ) : (
+                        <Eye className="w-4 h-4" />
+                      )}
                     </Button>
                   </div>
-                  {formData.confirmPassword && formData.password !== formData.confirmPassword && (
-                    <p className="text-xs text-destructive">Passwords do not match</p>
-                  )}
+                  {formData.confirmPassword &&
+                    formData.password !== formData.confirmPassword && (
+                      <p className="text-xs text-destructive">
+                        Passwords do not match
+                      </p>
+                    )}
                 </div>
 
                 {/* Consent Checkboxes */}
                 <div className="space-y-4 mt-6">
                   <div className="flex items-start space-x-2">
-                    <Checkbox 
-                      id="agreeTerms" 
+                    <Checkbox
+                      id="agreeTerms"
                       checked={formData.agreeTerms}
-                      onCheckedChange={(checked) => updateFormData("agreeTerms", checked)}
+                      onCheckedChange={(checked) =>
+                        updateFormData("agreeTerms", checked)
+                      }
                     />
-                    <Label htmlFor="agreeTerms" className="text-sm leading-relaxed cursor-pointer">
-                      I agree to the <Link to="/terms" className="text-primary hover:underline">Terms of Service</Link> and understand the platform guidelines *
+                    <Label
+                      htmlFor="agreeTerms"
+                      className="text-sm leading-relaxed cursor-pointer"
+                    >
+                      I agree to the{" "}
+                      <Link
+                        to="/terms"
+                        className="text-primary hover:underline"
+                      >
+                        Terms of Service
+                      </Link>{" "}
+                      and understand the platform guidelines *
                     </Label>
                   </div>
-                  
+
                   <div className="flex items-start space-x-2">
-                    <Checkbox 
-                      id="agreePrivacy" 
+                    <Checkbox
+                      id="agreePrivacy"
                       checked={formData.agreePrivacy}
-                      onCheckedChange={(checked) => updateFormData("agreePrivacy", checked)}
+                      onCheckedChange={(checked) =>
+                        updateFormData("agreePrivacy", checked)
+                      }
                     />
-                    <Label htmlFor="agreePrivacy" className="text-sm leading-relaxed cursor-pointer">
-                      I acknowledge the <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link> and consent to data processing for mental health support *
+                    <Label
+                      htmlFor="agreePrivacy"
+                      className="text-sm leading-relaxed cursor-pointer"
+                    >
+                      I acknowledge the{" "}
+                      <Link
+                        to="/privacy"
+                        className="text-primary hover:underline"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and consent to data processing for mental health support *
                     </Label>
                   </div>
-                  
+
                   <div className="flex items-start space-x-2">
-                    <Checkbox 
-                      id="consentCounseling" 
+                    <Checkbox
+                      id="consentCounseling"
                       checked={formData.consentCounseling}
-                      onCheckedChange={(checked) => updateFormData("consentCounseling", checked)}
+                      onCheckedChange={(checked) =>
+                        updateFormData("consentCounseling", checked)
+                      }
                     />
-                    <Label htmlFor="consentCounseling" className="text-sm leading-relaxed cursor-pointer">
-                      I consent to receiving mental health counseling and support through this platform *
+                    <Label
+                      htmlFor="consentCounseling"
+                      className="text-sm leading-relaxed cursor-pointer"
+                    >
+                      I consent to receiving mental health counseling and
+                      support through this platform *
                     </Label>
                   </div>
                 </div>
 
                 <div className="flex gap-3 mt-6">
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={() => setStep(2)}
                     className="flex-1"
                   >
                     Back
                   </Button>
-                  <Button 
-                    onClick={handleSubmit} 
-                    className="flex-1" 
+                  <Button
+                    onClick={handleSubmit}
+                    className="flex-1"
                     disabled={!validateStep3() || isLoading}
                   >
                     {isLoading ? (
@@ -426,7 +524,10 @@ export default function StudentRegistration() {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Already have an account?{" "}
-                <Link to="/student/login" className="text-primary hover:underline font-medium">
+                <Link
+                  to="/student/login"
+                  className="text-primary hover:underline font-medium"
+                >
                   Sign in here
                 </Link>
               </p>
@@ -438,7 +539,8 @@ export default function StudentRegistration() {
         <Alert className="mt-6 border-warning/20 bg-warning/5">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>
-            <strong>Emergency?</strong> If you're in immediate danger, call Campus Security at (XXX) XXX-XXXX or 988 (Crisis Lifeline).
+            <strong>Emergency?</strong> If you're in immediate danger, call
+            Campus Security at (XXX) XXX-XXXX or 988 (Crisis Lifeline).
           </AlertDescription>
         </Alert>
       </div>

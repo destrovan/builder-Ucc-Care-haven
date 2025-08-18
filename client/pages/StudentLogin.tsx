@@ -1,21 +1,27 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  ArrowLeft, 
-  Eye, 
-  EyeOff, 
-  User, 
+import {
+  Heart,
+  ArrowLeft,
+  Eye,
+  EyeOff,
+  User,
   Lock,
   Shield,
   AlertCircle,
-  HelpCircle
+  HelpCircle,
 } from "lucide-react";
 
 export default function StudentLogin() {
@@ -28,7 +34,7 @@ export default function StudentLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate login process
     setTimeout(() => {
       setIsLoading(false);
@@ -52,7 +58,7 @@ export default function StudentLogin() {
                 <p className="text-sm text-muted-foreground">Student Login</p>
               </div>
             </Link>
-            
+
             <Link to="/">
               <Button variant="outline" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -68,7 +74,8 @@ export default function StudentLogin() {
         <Alert className="mb-6 border-primary/20 bg-primary/5">
           <Shield className="h-4 w-4" />
           <AlertDescription>
-            Your login is secure and confidential. We protect your privacy and mental health information.
+            Your login is secure and confidential. We protect your privacy and
+            mental health information.
           </AlertDescription>
         </Alert>
 
@@ -79,7 +86,8 @@ export default function StudentLogin() {
             </div>
             <CardTitle className="text-2xl">Welcome Back</CardTitle>
             <CardDescription>
-              Sign in to access your wellness dashboard and continue your mental health journey
+              Sign in to access your wellness dashboard and continue your mental
+              health journey
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -130,25 +138,30 @@ export default function StudentLogin() {
               {/* Remember Me & Forgot Password */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Checkbox 
-                    id="remember" 
+                  <Checkbox
+                    id="remember"
                     checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                    onCheckedChange={(checked) =>
+                      setRememberMe(checked as boolean)
+                    }
                   />
                   <Label htmlFor="remember" className="text-sm cursor-pointer">
                     Remember me
                   </Label>
                 </div>
-                
-                <Button variant="link" className="text-sm text-primary p-0 h-auto">
+
+                <Button
+                  variant="link"
+                  className="text-sm text-primary p-0 h-auto"
+                >
                   Forgot password?
                 </Button>
               </div>
 
               {/* Submit Button */}
-              <Button 
-                type="submit" 
-                className="w-full" 
+              <Button
+                type="submit"
+                className="w-full"
                 size="lg"
                 disabled={!email || !password || isLoading}
               >
@@ -170,7 +183,10 @@ export default function StudentLogin() {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Don't have an account?{" "}
-                <Link to="/student/register" className="text-primary hover:underline font-medium">
+                <Link
+                  to="/student/register"
+                  className="text-primary hover:underline font-medium"
+                >
                   Create a student account
                 </Link>
               </p>
@@ -183,7 +199,8 @@ export default function StudentLogin() {
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Need help logging in?</h4>
                   <p className="text-xs text-muted-foreground">
-                    If you're having trouble accessing your account, contact Student IT Support or visit the campus help desk.
+                    If you're having trouble accessing your account, contact
+                    Student IT Support or visit the campus help desk.
                   </p>
                   <div className="space-y-1">
                     <p className="text-xs">📧 it-support@ucc.edu</p>
@@ -196,7 +213,9 @@ export default function StudentLogin() {
             {/* Anonymous Option */}
             <div className="mt-6 p-4 border rounded-lg bg-card">
               <div className="text-center space-y-3">
-                <h4 className="text-sm font-medium">Prefer to stay anonymous?</h4>
+                <h4 className="text-sm font-medium">
+                  Prefer to stay anonymous?
+                </h4>
                 <p className="text-xs text-muted-foreground">
                   You can still access support without creating an account
                 </p>
@@ -215,7 +234,8 @@ export default function StudentLogin() {
         <Alert className="mt-6 border-warning/20 bg-warning/5">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>
-            <strong>Emergency?</strong> If you're in immediate danger, call Campus Security at (XXX) XXX-XXXX or 988 (Crisis Lifeline).
+            <strong>Emergency?</strong> If you're in immediate danger, call
+            Campus Security at (XXX) XXX-XXXX or 988 (Crisis Lifeline).
           </AlertDescription>
         </Alert>
       </div>

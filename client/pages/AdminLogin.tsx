@@ -1,25 +1,31 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  ArrowLeft, 
-  Eye, 
-  EyeOff, 
-  Settings, 
+import {
+  Heart,
+  ArrowLeft,
+  Eye,
+  EyeOff,
+  Settings,
   Lock,
   Shield,
   AlertTriangle,
   HelpCircle,
   Database,
   CheckCircle,
-  Key
+  Key,
 } from "lucide-react";
 
 export default function AdminLogin() {
@@ -34,7 +40,7 @@ export default function AdminLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     if (!requiresTwoFactor) {
       // Simulate checking credentials and requiring 2FA
       setTimeout(() => {
@@ -63,10 +69,12 @@ export default function AdminLogin() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">UCC Care</h1>
-                <p className="text-sm text-muted-foreground">System Administration</p>
+                <p className="text-sm text-muted-foreground">
+                  System Administration
+                </p>
               </div>
             </Link>
-            
+
             <Link to="/">
               <Button variant="outline" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -82,7 +90,9 @@ export default function AdminLogin() {
         <Alert className="mb-6 border-destructive/20 bg-destructive/5">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            <strong>Restricted Access</strong> - This area is limited to authorized system administrators only. All access is logged and monitored.
+            <strong>Restricted Access</strong> - This area is limited to
+            authorized system administrators only. All access is logged and
+            monitored.
           </AlertDescription>
         </Alert>
 
@@ -154,7 +164,10 @@ export default function AdminLogin() {
               {/* Two-Factor Authentication */}
               {requiresTwoFactor && (
                 <div className="space-y-2 p-4 bg-trust-teal/5 border border-trust-teal/20 rounded-lg">
-                  <Label htmlFor="twoFactorCode" className="flex items-center space-x-2">
+                  <Label
+                    htmlFor="twoFactorCode"
+                    className="flex items-center space-x-2"
+                  >
                     <Key className="w-4 h-4" />
                     <span>Two-Factor Authentication Code</span>
                   </Label>
@@ -169,7 +182,8 @@ export default function AdminLogin() {
                     className="w-full font-mono text-center tracking-widest"
                   />
                   <p className="text-xs text-muted-foreground">
-                    Check your authenticator app for the current verification code
+                    Check your authenticator app for the current verification
+                    code
                   </p>
                 </div>
               )}
@@ -177,10 +191,12 @@ export default function AdminLogin() {
               {/* Remember Me */}
               {!requiresTwoFactor && (
                 <div className="flex items-center space-x-2">
-                  <Checkbox 
-                    id="remember" 
+                  <Checkbox
+                    id="remember"
                     checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                    onCheckedChange={(checked) =>
+                      setRememberMe(checked as boolean)
+                    }
                   />
                   <Label htmlFor="remember" className="text-sm cursor-pointer">
                     Keep me signed in (not recommended on shared devices)
@@ -189,13 +205,14 @@ export default function AdminLogin() {
               )}
 
               {/* Submit Button */}
-              <Button 
-                type="submit" 
-                className="w-full bg-trust-teal hover:bg-trust-teal/90" 
+              <Button
+                type="submit"
+                className="w-full bg-trust-teal hover:bg-trust-teal/90"
                 size="lg"
                 disabled={
                   (!requiresTwoFactor && (!email || !password)) ||
-                  (requiresTwoFactor && (!twoFactorCode || twoFactorCode.length !== 6)) ||
+                  (requiresTwoFactor &&
+                    (!twoFactorCode || twoFactorCode.length !== 6)) ||
                   isLoading
                 }
               >
@@ -207,7 +224,9 @@ export default function AdminLogin() {
                 ) : (
                   <>
                     <Lock className="w-4 h-4 mr-2" />
-                    {requiresTwoFactor ? "Verify & Access" : "Access Admin Panel"}
+                    {requiresTwoFactor
+                      ? "Verify & Access"
+                      : "Access Admin Panel"}
                   </>
                 )}
               </Button>
@@ -248,9 +267,12 @@ export default function AdminLogin() {
               <div className="flex items-start space-x-3">
                 <HelpCircle className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                 <div className="space-y-2">
-                  <h4 className="text-sm font-medium">Administrative Support</h4>
+                  <h4 className="text-sm font-medium">
+                    Administrative Support
+                  </h4>
                   <p className="text-xs text-muted-foreground">
-                    For technical issues or security concerns, contact the IT Security team immediately.
+                    For technical issues or security concerns, contact the IT
+                    Security team immediately.
                   </p>
                   <div className="space-y-1">
                     <p className="text-xs">🔒 security@ucc.edu</p>
@@ -267,8 +289,9 @@ export default function AdminLogin() {
                 <div className="space-y-1">
                   <h4 className="text-sm font-medium">Security & Compliance</h4>
                   <p className="text-xs text-muted-foreground">
-                    This system maintains the highest security standards including encryption, 
-                    audit logging, and compliance with HIPAA, FERPA, and institutional policies.
+                    This system maintains the highest security standards
+                    including encryption, audit logging, and compliance with
+                    HIPAA, FERPA, and institutional policies.
                   </p>
                 </div>
               </div>
@@ -279,10 +302,13 @@ export default function AdminLogin() {
               <div className="flex items-start space-x-3">
                 <AlertTriangle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-sm font-medium">Administrator Responsibility</h4>
+                  <h4 className="text-sm font-medium">
+                    Administrator Responsibility
+                  </h4>
                   <p className="text-xs text-muted-foreground">
-                    Unauthorized access attempts are monitored and logged. 
-                    Administrative privileges must be used responsibly and in accordance with institutional policies.
+                    Unauthorized access attempts are monitored and logged.
+                    Administrative privileges must be used responsibly and in
+                    accordance with institutional policies.
                   </p>
                 </div>
               </div>

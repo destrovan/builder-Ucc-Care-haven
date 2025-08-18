@@ -1,17 +1,36 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  Users, 
-  TrendingUp, 
+import {
+  Heart,
+  Users,
+  TrendingUp,
   AlertTriangle,
   Settings,
   Database,
@@ -28,7 +47,7 @@ import {
   Download,
   Eye,
   UserCheck,
-  Clock
+  Clock,
 } from "lucide-react";
 
 export default function AdminDashboard() {
@@ -43,64 +62,158 @@ export default function AdminDashboard() {
     resolvedReports: 134,
     pendingReports: 22,
     avgResponseTime: "4.2 hours",
-    systemUptime: "99.8%"
+    systemUptime: "99.8%",
   };
 
   const recentUsers = [
-    { id: "1", name: "Sarah Johnson", email: "s.johnson@student.ucc.edu", role: "student", status: "active", joinDate: "2024-01-15" },
-    { id: "2", name: "Dr. Michael Chen", email: "m.chen@ucc.edu", role: "counselor", status: "active", joinDate: "2024-01-10" },
-    { id: "3", name: "Emma Wilson", email: "e.wilson@student.ucc.edu", role: "student", status: "pending", joinDate: "2024-01-14" },
-    { id: "4", name: "Alex Thompson", email: "a.thompson@student.ucc.edu", role: "student", status: "active", joinDate: "2024-01-12" }
+    {
+      id: "1",
+      name: "Sarah Johnson",
+      email: "s.johnson@student.ucc.edu",
+      role: "student",
+      status: "active",
+      joinDate: "2024-01-15",
+    },
+    {
+      id: "2",
+      name: "Dr. Michael Chen",
+      email: "m.chen@ucc.edu",
+      role: "counselor",
+      status: "active",
+      joinDate: "2024-01-10",
+    },
+    {
+      id: "3",
+      name: "Emma Wilson",
+      email: "e.wilson@student.ucc.edu",
+      role: "student",
+      status: "pending",
+      joinDate: "2024-01-14",
+    },
+    {
+      id: "4",
+      name: "Alex Thompson",
+      email: "a.thompson@student.ucc.edu",
+      role: "student",
+      status: "active",
+      joinDate: "2024-01-12",
+    },
   ];
 
   const systemLogs = [
-    { id: "1", timestamp: "2024-01-15T14:30:00Z", level: "info", action: "User Login", details: "Student login successful", user: "s.johnson@student.ucc.edu" },
-    { id: "2", timestamp: "2024-01-15T14:25:00Z", level: "warning", action: "Failed Login", details: "Multiple failed login attempts", user: "unknown@domain.com" },
-    { id: "3", timestamp: "2024-01-15T14:20:00Z", level: "info", action: "Report Submitted", details: "New support request created", user: "anonymous" },
-    { id: "4", timestamp: "2024-01-15T14:15:00Z", level: "info", action: "Case Updated", details: "Counselor response added", user: "m.chen@ucc.edu" }
+    {
+      id: "1",
+      timestamp: "2024-01-15T14:30:00Z",
+      level: "info",
+      action: "User Login",
+      details: "Student login successful",
+      user: "s.johnson@student.ucc.edu",
+    },
+    {
+      id: "2",
+      timestamp: "2024-01-15T14:25:00Z",
+      level: "warning",
+      action: "Failed Login",
+      details: "Multiple failed login attempts",
+      user: "unknown@domain.com",
+    },
+    {
+      id: "3",
+      timestamp: "2024-01-15T14:20:00Z",
+      level: "info",
+      action: "Report Submitted",
+      details: "New support request created",
+      user: "anonymous",
+    },
+    {
+      id: "4",
+      timestamp: "2024-01-15T14:15:00Z",
+      level: "info",
+      action: "Case Updated",
+      details: "Counselor response added",
+      user: "m.chen@ucc.edu",
+    },
   ];
 
   const resources = [
-    { id: "1", title: "Managing Exam Stress", category: "Academic", views: 89, status: "published", lastUpdated: "2024-01-10" },
-    { id: "2", title: "Breathing Exercises for Anxiety", category: "Wellness", views: 156, status: "published", lastUpdated: "2024-01-08" },
-    { id: "3", title: "Building Social Connections", category: "Social", views: 67, status: "draft", lastUpdated: "2024-01-12" },
-    { id: "4", title: "Sleep Hygiene Guide", category: "Health", views: 134, status: "published", lastUpdated: "2024-01-05" }
+    {
+      id: "1",
+      title: "Managing Exam Stress",
+      category: "Academic",
+      views: 89,
+      status: "published",
+      lastUpdated: "2024-01-10",
+    },
+    {
+      id: "2",
+      title: "Breathing Exercises for Anxiety",
+      category: "Wellness",
+      views: 156,
+      status: "published",
+      lastUpdated: "2024-01-08",
+    },
+    {
+      id: "3",
+      title: "Building Social Connections",
+      category: "Social",
+      views: 67,
+      status: "draft",
+      lastUpdated: "2024-01-12",
+    },
+    {
+      id: "4",
+      title: "Sleep Hygiene Guide",
+      category: "Health",
+      views: 134,
+      status: "published",
+      lastUpdated: "2024-01-05",
+    },
   ];
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
     });
   };
 
   const formatDateTime = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-500/10 text-green-700 border-green-200';
-      case 'pending': return 'bg-yellow-500/10 text-yellow-700 border-yellow-200';
-      case 'suspended': return 'bg-red-500/10 text-red-700 border-red-200';
-      case 'published': return 'bg-blue-500/10 text-blue-700 border-blue-200';
-      case 'draft': return 'bg-gray-500/10 text-gray-700 border-gray-200';
-      default: return 'bg-gray-500/10 text-gray-700 border-gray-200';
+      case "active":
+        return "bg-green-500/10 text-green-700 border-green-200";
+      case "pending":
+        return "bg-yellow-500/10 text-yellow-700 border-yellow-200";
+      case "suspended":
+        return "bg-red-500/10 text-red-700 border-red-200";
+      case "published":
+        return "bg-blue-500/10 text-blue-700 border-blue-200";
+      case "draft":
+        return "bg-gray-500/10 text-gray-700 border-gray-200";
+      default:
+        return "bg-gray-500/10 text-gray-700 border-gray-200";
     }
   };
 
   const getLogLevelColor = (level: string) => {
     switch (level) {
-      case 'info': return 'bg-blue-500/10 text-blue-700 border-blue-200';
-      case 'warning': return 'bg-yellow-500/10 text-yellow-700 border-yellow-200';
-      case 'error': return 'bg-red-500/10 text-red-700 border-red-200';
-      default: return 'bg-gray-500/10 text-gray-700 border-gray-200';
+      case "info":
+        return "bg-blue-500/10 text-blue-700 border-blue-200";
+      case "warning":
+        return "bg-yellow-500/10 text-yellow-700 border-yellow-200";
+      case "error":
+        return "bg-red-500/10 text-red-700 border-red-200";
+      default:
+        return "bg-gray-500/10 text-gray-700 border-gray-200";
     }
   };
 
@@ -116,10 +229,12 @@ export default function AdminDashboard() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">UCC Care</h1>
-                <p className="text-sm text-muted-foreground">System Administration</p>
+                <p className="text-sm text-muted-foreground">
+                  System Administration
+                </p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="sm">
                 <User className="w-4 h-4 mr-2" />
@@ -150,37 +265,45 @@ export default function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Active Students</p>
-                  <p className="text-2xl font-bold text-blue-600">{systemStats.activeStudents}</p>
+                  <p className="text-sm text-muted-foreground">
+                    Active Students
+                  </p>
+                  <p className="text-2xl font-bold text-blue-600">
+                    {systemStats.activeStudents}
+                  </p>
                 </div>
                 <User className="w-8 h-8 text-blue-600" />
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">Total Reports</p>
-                  <p className="text-2xl font-bold text-primary">{systemStats.totalReports}</p>
+                  <p className="text-2xl font-bold text-primary">
+                    {systemStats.totalReports}
+                  </p>
                 </div>
                 <FileText className="w-8 h-8 text-primary" />
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">System Uptime</p>
-                  <p className="text-2xl font-bold text-green-600">{systemStats.systemUptime}</p>
+                  <p className="text-2xl font-bold text-green-600">
+                    {systemStats.systemUptime}
+                  </p>
                 </div>
                 <Activity className="w-8 h-8 text-green-600" />
               </div>
@@ -189,7 +312,11 @@ export default function AdminDashboard() {
         </div>
 
         {/* Admin Panel Tabs */}
-        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
+        <Tabs
+          value={selectedTab}
+          onValueChange={setSelectedTab}
+          className="w-full"
+        >
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="users">User Management</TabsTrigger>
@@ -197,7 +324,7 @@ export default function AdminDashboard() {
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="logs">System Logs</TabsTrigger>
           </TabsList>
-          
+
           {/* Overview Tab */}
           <TabsContent value="overview" className="space-y-6">
             <div className="grid lg:grid-cols-2 gap-6">
@@ -212,15 +339,21 @@ export default function AdminDashboard() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Average Response Time</span>
-                      <Badge className="bg-green-500/10 text-green-700">{systemStats.avgResponseTime}</Badge>
+                      <Badge className="bg-green-500/10 text-green-700">
+                        {systemStats.avgResponseTime}
+                      </Badge>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Resolved Reports</span>
-                      <Badge className="bg-blue-500/10 text-blue-700">{systemStats.resolvedReports}/{systemStats.totalReports}</Badge>
+                      <Badge className="bg-blue-500/10 text-blue-700">
+                        {systemStats.resolvedReports}/{systemStats.totalReports}
+                      </Badge>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm">Active Counselors</span>
-                      <Badge className="bg-primary/10 text-primary">{systemStats.activeCounselors}</Badge>
+                      <Badge className="bg-primary/10 text-primary">
+                        {systemStats.activeCounselors}
+                      </Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -238,15 +371,21 @@ export default function AdminDashboard() {
                     <div className="flex items-center space-x-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                       <AlertTriangle className="w-4 h-4 text-yellow-600" />
                       <div>
-                        <p className="text-sm font-medium">High Priority Reports</p>
-                        <p className="text-xs text-muted-foreground">2 reports require immediate attention</p>
+                        <p className="text-sm font-medium">
+                          High Priority Reports
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          2 reports require immediate attention
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                       <Activity className="w-4 h-4 text-blue-600" />
                       <div>
                         <p className="text-sm font-medium">System Health</p>
-                        <p className="text-xs text-muted-foreground">All services operational</p>
+                        <p className="text-xs text-muted-foreground">
+                          All services operational
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -264,7 +403,10 @@ export default function AdminDashboard() {
                   <div className="flex space-x-2">
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                      <Input placeholder="Search users..." className="pl-10 w-64" />
+                      <Input
+                        placeholder="Search users..."
+                        className="pl-10 w-64"
+                      />
                     </div>
                     <Button size="sm">
                       <Plus className="w-4 h-4 mr-2" />
@@ -288,7 +430,9 @@ export default function AdminDashboard() {
                   <TableBody>
                     {recentUsers.map((user) => (
                       <TableRow key={user.id}>
-                        <TableCell className="font-medium">{user.name}</TableCell>
+                        <TableCell className="font-medium">
+                          {user.name}
+                        </TableCell>
                         <TableCell>{user.email}</TableCell>
                         <TableCell>
                           <Badge variant="outline" className="capitalize">
@@ -346,7 +490,9 @@ export default function AdminDashboard() {
                   <TableBody>
                     {resources.map((resource) => (
                       <TableRow key={resource.id}>
-                        <TableCell className="font-medium">{resource.title}</TableCell>
+                        <TableCell className="font-medium">
+                          {resource.title}
+                        </TableCell>
                         <TableCell>
                           <Badge variant="outline">{resource.category}</Badge>
                         </TableCell>
@@ -356,7 +502,9 @@ export default function AdminDashboard() {
                             {resource.status}
                           </Badge>
                         </TableCell>
-                        <TableCell>{formatDate(resource.lastUpdated)}</TableCell>
+                        <TableCell>
+                          {formatDate(resource.lastUpdated)}
+                        </TableCell>
                         <TableCell>
                           <div className="flex space-x-2">
                             <Button variant="ghost" size="sm">
@@ -384,7 +532,9 @@ export default function AdminDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Usage Analytics</CardTitle>
-                  <CardDescription>Platform usage statistics and trends</CardDescription>
+                  <CardDescription>
+                    Platform usage statistics and trends
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -407,7 +557,9 @@ export default function AdminDashboard() {
               <Card>
                 <CardHeader>
                   <CardTitle>Export Data</CardTitle>
-                  <CardDescription>Download system reports and analytics</CardDescription>
+                  <CardDescription>
+                    Download system reports and analytics
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -474,9 +626,13 @@ export default function AdminDashboard() {
                             {log.level.toUpperCase()}
                           </Badge>
                         </TableCell>
-                        <TableCell className="font-medium">{log.action}</TableCell>
+                        <TableCell className="font-medium">
+                          {log.action}
+                        </TableCell>
                         <TableCell>{log.details}</TableCell>
-                        <TableCell className="font-mono text-sm">{log.user}</TableCell>
+                        <TableCell className="font-mono text-sm">
+                          {log.user}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

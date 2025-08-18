@@ -37,7 +37,10 @@ export default function App() {
 
             {/* Counselor Routes */}
             <Route path="/counselor/login" element={<CounselorLogin />} />
-            <Route path="/counselor/dashboard" element={<CounselorDashboard />} />
+            <Route
+              path="/counselor/dashboard"
+              element={<CounselorDashboard />}
+            />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />

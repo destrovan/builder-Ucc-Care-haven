@@ -1,24 +1,30 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { 
-  Heart, 
-  ArrowLeft, 
-  Eye, 
-  EyeOff, 
-  UserCheck, 
+import {
+  Heart,
+  ArrowLeft,
+  Eye,
+  EyeOff,
+  UserCheck,
   Lock,
   Shield,
   AlertCircle,
   HelpCircle,
   Users,
-  CheckCircle
+  CheckCircle,
 } from "lucide-react";
 
 export default function CounselorLogin() {
@@ -31,7 +37,7 @@ export default function CounselorLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate login process
     setTimeout(() => {
       setIsLoading(false);
@@ -52,10 +58,12 @@ export default function CounselorLogin() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">UCC Care</h1>
-                <p className="text-sm text-muted-foreground">Professional Access</p>
+                <p className="text-sm text-muted-foreground">
+                  Professional Access
+                </p>
               </div>
             </Link>
-            
+
             <Link to="/">
               <Button variant="outline" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -71,7 +79,9 @@ export default function CounselorLogin() {
         <Alert className="mb-6 border-hope-green/20 bg-hope-green/5">
           <UserCheck className="h-4 w-4" />
           <AlertDescription>
-            <strong>Professional Access Portal</strong> - This area is restricted to licensed mental health counselors and authorized UCC staff.
+            <strong>Professional Access Portal</strong> - This area is
+            restricted to licensed mental health counselors and authorized UCC
+            staff.
           </AlertDescription>
         </Alert>
 
@@ -141,25 +151,30 @@ export default function CounselorLogin() {
               {/* Remember Me & Forgot Password */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Checkbox 
-                    id="remember" 
+                  <Checkbox
+                    id="remember"
                     checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                    onCheckedChange={(checked) =>
+                      setRememberMe(checked as boolean)
+                    }
                   />
                   <Label htmlFor="remember" className="text-sm cursor-pointer">
                     Keep me signed in
                   </Label>
                 </div>
-                
-                <Button variant="link" className="text-sm text-primary p-0 h-auto">
+
+                <Button
+                  variant="link"
+                  className="text-sm text-primary p-0 h-auto"
+                >
                   Reset password
                 </Button>
               </div>
 
               {/* Submit Button */}
-              <Button 
-                type="submit" 
-                className="w-full bg-hope-green hover:bg-hope-green/90" 
+              <Button
+                type="submit"
+                className="w-full bg-hope-green hover:bg-hope-green/90"
                 size="lg"
                 disabled={!email || !password || isLoading}
               >
@@ -208,9 +223,12 @@ export default function CounselorLogin() {
               <div className="flex items-start space-x-3">
                 <HelpCircle className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                 <div className="space-y-2">
-                  <h4 className="text-sm font-medium">Need help accessing your account?</h4>
+                  <h4 className="text-sm font-medium">
+                    Need help accessing your account?
+                  </h4>
                   <p className="text-xs text-muted-foreground">
-                    Contact the IT Department or your department supervisor for access issues.
+                    Contact the IT Department or your department supervisor for
+                    access issues.
                   </p>
                   <div className="space-y-1">
                     <p className="text-xs">📧 counseling-it@ucc.edu</p>
@@ -227,8 +245,9 @@ export default function CounselorLogin() {
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">Security & Compliance</h4>
                   <p className="text-xs text-muted-foreground">
-                    This system complies with HIPAA, FERPA, and institutional privacy standards. 
-                    All access is logged and monitored for security purposes.
+                    This system complies with HIPAA, FERPA, and institutional
+                    privacy standards. All access is logged and monitored for
+                    security purposes.
                   </p>
                 </div>
               </div>
@@ -239,10 +258,13 @@ export default function CounselorLogin() {
               <div className="flex items-start space-x-3">
                 <AlertCircle className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-sm font-medium">Professional Responsibility</h4>
+                  <h4 className="text-sm font-medium">
+                    Professional Responsibility
+                  </h4>
                   <p className="text-xs text-muted-foreground">
-                    By accessing this system, you agree to maintain professional ethics, 
-                    student confidentiality, and follow all institutional guidelines for mental health services.
+                    By accessing this system, you agree to maintain professional
+                    ethics, student confidentiality, and follow all
+                    institutional guidelines for mental health services.
                   </p>
                 </div>
               </div>
@@ -254,7 +276,9 @@ export default function CounselorLogin() {
         <Alert className="mt-6 border-destructive/20 bg-destructive/5">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>
-            <strong>Crisis Protocol:</strong> For immediate student emergencies, follow institutional crisis intervention procedures and contact Campus Security immediately.
+            <strong>Crisis Protocol:</strong> For immediate student emergencies,
+            follow institutional crisis intervention procedures and contact
+            Campus Security immediately.
           </AlertDescription>
         </Alert>
       </div>
