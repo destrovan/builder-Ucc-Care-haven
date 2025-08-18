@@ -40,48 +40,16 @@ export default function App() {
             <Route path="/counselor/dashboard" element={<CounselorDashboard />} />
 
             {/* Admin Routes */}
-            <Route
-              path="/admin/login"
-              element={
-                <PlaceholderPage
-                  title="Administrator Login"
-                  description="System administration and platform management access"
-                />
-              }
-            />
-            <Route
-              path="/admin/dashboard"
-              element={
-                <PlaceholderPage
-                  title="Admin Dashboard"
-                  description="System-wide analytics and user management interface"
-                />
-              }
-            />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
             {/* Support & Reporting Routes */}
             <Route path="/anonymous-report" element={<AnonymousReport />} />
             <Route path="/report" element={<AuthenticatedReport />} />
-            <Route
-              path="/report-status"
-              element={
-                <PlaceholderPage
-                  title="Report Status"
-                  description="Check the status of your submitted support request using your tracking ID"
-                />
-              }
-            />
+            <Route path="/report-status" element={<ReportStatus />} />
 
             {/* Resources */}
-            <Route
-              path="/resources"
-              element={
-                <PlaceholderPage
-                  title="Resource Hub"
-                  description="Browse our library of mental health resources, articles, and wellness tools"
-                />
-              }
-            />
+            <Route path="/resources" element={<ResourceHub />} />
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
