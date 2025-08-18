@@ -10,6 +10,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import StudentDashboard from "./pages/StudentDashboard";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import AnonymousReport from "./pages/AnonymousReport";
+import AuthenticatedReport from "./pages/AuthenticatedReport";
 
 const queryClient = new QueryClient();
 
