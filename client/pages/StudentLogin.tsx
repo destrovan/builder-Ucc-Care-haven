@@ -72,13 +72,23 @@ export default function StudentLogin() {
       {/* Selected Panel Indicator */}
       <div className="bg-primary/10 border-b border-primary/20">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-center space-x-2">
-            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-              <User className="w-5 h-5 text-primary" />
+          <div className="flex items-center justify-between">
+            {/* Breadcrumb */}
+            <div className="flex items-center space-x-2 text-sm text-primary/70">
+              <Link to="/" className="hover:text-primary">Home</Link>
+              <span>/</span>
+              <span className="text-primary font-medium">Student Access</span>
             </div>
-            <span className="text-primary font-semibold">Student Access Panel</span>
-            <div className="px-2 py-1 bg-primary/20 rounded-full">
-              <span className="text-xs text-primary font-medium">SELECTED</span>
+
+            {/* Panel Indicator */}
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <User className="w-5 h-5 text-primary" />
+              </div>
+              <span className="text-primary font-semibold">Student Panel</span>
+              <div className="px-2 py-1 bg-primary/20 rounded-full">
+                <span className="text-xs text-primary font-medium">ACTIVE</span>
+              </div>
             </div>
           </div>
         </div>
