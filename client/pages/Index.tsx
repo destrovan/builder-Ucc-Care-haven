@@ -166,8 +166,8 @@ export default function Index() {
           </Card>
 
           {/* Counselor Access */}
-          <Card className="relative overflow-hidden border-hope-green/40 hover:border-hope-green/60 transition-all duration-300 hover:shadow-lg">
-            <div className="absolute top-0 left-0 w-full h-1 bg-hope-green"></div>
+          <Card className="relative overflow-hidden border-hope-green/40 hover:border-hope-green/60 transition-all duration-300 hover:shadow-lg hover:shadow-hope-green/20 group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-hope-green group-hover:h-2 transition-all duration-300"></div>
             <CardHeader className="text-center pb-4">
               <div className="w-16 h-16 mx-auto bg-hope-green/10 rounded-full flex items-center justify-center mb-4">
                 <UserCheck className="w-8 h-8 text-hope-green" />
