@@ -64,7 +64,7 @@ export default function AdminLogin() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-trust-teal text-white">
                 <Heart className="w-6 h-6" />
               </div>
               <div>
