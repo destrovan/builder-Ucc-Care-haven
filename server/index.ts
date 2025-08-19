@@ -5,13 +5,30 @@ import { handleDemo } from "./routes/demo";
 import { connectDatabase } from "./config/database";
 
 // Import authentication routes
-import { loginStudent, registerStudent, loginCounselor, loginAdmin } from "./routes/auth";
+import {
+  loginStudent,
+  registerStudent,
+  loginCounselor,
+  loginAdmin,
+} from "./routes/auth";
 
 // Import reports routes
-import { submitReport, getReportStatus, getCounselorCases, addReportUpdate } from "./routes/reports";
+import {
+  submitReport,
+  getReportStatus,
+  getCounselorCases,
+  addReportUpdate,
+} from "./routes/reports";
 
 // Import resources routes
-import { getResources, getResourceCategories, incrementViewCount, createResource, updateResource, deleteResource } from "./routes/resources";
+import {
+  getResources,
+  getResourceCategories,
+  incrementViewCount,
+  createResource,
+  updateResource,
+  deleteResource,
+} from "./routes/resources";
 
 export function createServer() {
   const app = express();

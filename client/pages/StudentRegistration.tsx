@@ -136,9 +136,13 @@ export default function StudentRegistration() {
           <div className="flex items-center justify-between">
             {/* Breadcrumb */}
             <div className="flex items-center space-x-2 text-sm text-primary/70">
-              <Link to="/" className="hover:text-primary">Home</Link>
+              <Link to="/" className="hover:text-primary">
+                Home
+              </Link>
               <span>/</span>
-              <span className="text-primary font-medium">Student Registration</span>
+              <span className="text-primary font-medium">
+                Student Registration
+              </span>
             </div>
 
             {/* Panel Indicator */}

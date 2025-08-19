@@ -6,19 +6,19 @@ import { query } from "../config/database";
 export const loginStudent: RequestHandler = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
+      return res.status(400).json({ error: "Email and password are required" });
     }
 
     // Find user in database
     const result = await query(
-      'SELECT id, email, password_hash, role, status, first_name, last_name FROM users WHERE email = $1 AND role = $2',
-      [email, 'student']
+      "SELECT id, email, password_hash, role, status, first_name, last_name FROM users WHERE email = $1 AND role = $2",
+      [email, "student"],
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     const user = result.rows[0];
@@ -28,27 +28,29 @@ export const loginStudent: RequestHandler = async (req, res) => {
     const isValidPassword = true; // await bcrypt.compare(password, user.password_hash);
 
     if (!isValidPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    if (user.status !== 'active') {
-      return res.status(401).json({ error: 'Account is not active' });
+    if (user.status !== "active") {
+      return res.status(401).json({ error: "Account is not active" });
     }
 
     // Update last login
-    await query('UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = $1', [user.id]);
+    await query(
+      "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = $1",
+      [user.id],
+    );
 
     // Return user data (excluding password)
     const { password_hash, ...userWithoutPassword } = user;
     res.json({
       success: true,
       user: userWithoutPassword,
-      message: 'Login successful'
+      message: "Login successful",
     });
-
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Login error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -65,13 +67,17 @@ export const registerStudent: RequestHandler = async (req, res) => {
       program,
       emergencyContact,
       emergencyPhone,
-      password
+      password,
     } = req.body;
 
     // Check if user already exists
-    const existingUser = await query('SELECT id FROM users WHERE email = $1', [email]);
+    const existingUser = await query("SELECT id FROM users WHERE email = $1", [
+      email,
+    ]);
     if (existingUser.rows.length > 0) {
-      return res.status(400).json({ error: 'User already exists with this email' });
+      return res
+        .status(400)
+        .json({ error: "User already exists with this email" });
     }
 
     // Hash password
@@ -81,7 +87,7 @@ export const registerStudent: RequestHandler = async (req, res) => {
     const userResult = await query(
       `INSERT INTO users (email, password_hash, role, first_name, last_name, status, email_verified) 
        VALUES ($1, $2, 'student', $3, $4, 'active', true) RETURNING id`,
-      [email, passwordHash, firstName, lastName]
+      [email, passwordHash, firstName, lastName],
     );
 
     const userId = userResult.rows[0].id;
@@ -91,18 +97,25 @@ export const registerStudent: RequestHandler = async (req, res) => {
       `INSERT INTO student_profiles 
        (user_id, student_id, phone, academic_year, program, emergency_contact_name, emergency_contact_phone, consent_counseling, consent_data_processing)
        VALUES ($1, $2, $3, $4, $5, $6, $7, true, true)`,
-      [userId, studentId, phone, year, program, emergencyContact, emergencyPhone]
+      [
+        userId,
+        studentId,
+        phone,
+        year,
+        program,
+        emergencyContact,
+        emergencyPhone,
+      ],
     );
 
     res.json({
       success: true,
-      message: 'Registration successful',
-      userId
+      message: "Registration successful",
+      userId,
     });
-
   } catch (error) {
-    console.error('Registration error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Registration error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -110,37 +123,39 @@ export const registerStudent: RequestHandler = async (req, res) => {
 export const loginCounselor: RequestHandler = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     const result = await query(
-      'SELECT id, email, password_hash, role, status, first_name, last_name FROM users WHERE email = $1 AND role = $2',
-      [email, 'counselor']
+      "SELECT id, email, password_hash, role, status, first_name, last_name FROM users WHERE email = $1 AND role = $2",
+      [email, "counselor"],
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     const user = result.rows[0];
-    
+
     // For demo, accept any password
     const isValidPassword = true;
 
     if (!isValidPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    await query('UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = $1', [user.id]);
+    await query(
+      "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = $1",
+      [user.id],
+    );
 
     const { password_hash, ...userWithoutPassword } = user;
     res.json({
       success: true,
       user: userWithoutPassword,
-      message: 'Login successful'
+      message: "Login successful",
     });
-
   } catch (error) {
-    console.error('Counselor login error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Counselor login error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -148,36 +163,38 @@ export const loginCounselor: RequestHandler = async (req, res) => {
 export const loginAdmin: RequestHandler = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     const result = await query(
-      'SELECT id, email, password_hash, role, status, first_name, last_name FROM users WHERE email = $1 AND role = $2',
-      [email, 'admin']
+      "SELECT id, email, password_hash, role, status, first_name, last_name FROM users WHERE email = $1 AND role = $2",
+      [email, "admin"],
     );
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     const user = result.rows[0];
-    
+
     // For demo, accept any password
     const isValidPassword = true;
 
     if (!isValidPassword) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    await query('UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = $1', [user.id]);
+    await query(
+      "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = $1",
+      [user.id],
+    );
 
     const { password_hash, ...userWithoutPassword } = user;
     res.json({
       success: true,
       user: userWithoutPassword,
-      message: 'Login successful'
+      message: "Login successful",
     });
-
   } catch (error) {
-    console.error('Admin login error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Admin login error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };

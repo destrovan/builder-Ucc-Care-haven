@@ -5,30 +5,30 @@ import { query } from "../config/database";
 export const getResources: RequestHandler = async (req, res) => {
   try {
     const { category, type, featured, search } = req.query;
-    
+
     let baseQuery = `
       SELECT r.*, u.first_name, u.last_name 
       FROM resources r
       LEFT JOIN users u ON r.created_by = u.id
       WHERE r.status = 'published'
     `;
-    
+
     const params: any[] = [];
     let paramIndex = 1;
 
-    if (category && category !== 'all') {
+    if (category && category !== "all") {
       baseQuery += ` AND r.category = $${paramIndex}`;
       params.push(category);
       paramIndex++;
     }
 
-    if (type && type !== 'all') {
+    if (type && type !== "all") {
       baseQuery += ` AND r.resource_type = $${paramIndex}`;
       params.push(type);
       paramIndex++;
     }
 
-    if (featured === 'true') {
+    if (featured === "true") {
       baseQuery += ` AND r.is_featured = true`;
     }
 
@@ -41,30 +41,33 @@ export const getResources: RequestHandler = async (req, res) => {
 
     const result = await query(baseQuery, params);
 
-    const resources = result.rows.map(resource => ({
+    const resources = result.rows.map((resource) => ({
       id: resource.id,
       title: resource.title,
       description: resource.description,
       type: resource.resource_type,
       category: resource.category,
       tags: resource.tags || [],
-      duration: resource.duration_minutes ? `${resource.duration_minutes} min` : 'Quick reference',
+      duration: resource.duration_minutes
+        ? `${resource.duration_minutes} min`
+        : "Quick reference",
       rating: parseFloat(resource.rating) || 0,
       views: resource.view_count || 0,
       featured: resource.is_featured,
-      url: resource.url || '#',
-      createdBy: resource.first_name && resource.last_name ? 
-        `${resource.first_name} ${resource.last_name}` : 'System'
+      url: resource.url || "#",
+      createdBy:
+        resource.first_name && resource.last_name
+          ? `${resource.first_name} ${resource.last_name}`
+          : "System",
     }));
 
     res.json({
       success: true,
-      resources
+      resources,
     });
-
   } catch (error) {
-    console.error('Get resources error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Get resources error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -82,22 +85,25 @@ export const getResourceCategories: RequestHandler = async (req, res) => {
     `);
 
     const categories = [
-      { id: 'all', name: 'All Resources', count: result.rows.reduce((sum, row) => sum + parseInt(row.count), 0) },
-      ...result.rows.map(row => ({
+      {
+        id: "all",
+        name: "All Resources",
+        count: result.rows.reduce((sum, row) => sum + parseInt(row.count), 0),
+      },
+      ...result.rows.map((row) => ({
         id: row.category,
         name: row.category.charAt(0).toUpperCase() + row.category.slice(1),
-        count: parseInt(row.count)
-      }))
+        count: parseInt(row.count),
+      })),
     ];
 
     res.json({
       success: true,
-      categories
+      categories,
     });
-
   } catch (error) {
-    console.error('Get resource categories error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Get resource categories error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -107,18 +113,17 @@ export const incrementViewCount: RequestHandler = async (req, res) => {
     const { resourceId } = req.params;
 
     await query(
-      'UPDATE resources SET view_count = view_count + 1 WHERE id = $1',
-      [resourceId]
+      "UPDATE resources SET view_count = view_count + 1 WHERE id = $1",
+      [resourceId],
     );
 
     res.json({
       success: true,
-      message: 'View count updated'
+      message: "View count updated",
     });
-
   } catch (error) {
-    console.error('Increment view count error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Increment view count error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -135,11 +140,13 @@ export const createResource: RequestHandler = async (req, res) => {
       url,
       durationMinutes,
       isFeatured,
-      createdBy
+      createdBy,
     } = req.body;
 
     if (!title || !resourceType || !category) {
-      return res.status(400).json({ error: 'Title, type, and category are required' });
+      return res
+        .status(400)
+        .json({ error: "Title, type, and category are required" });
     }
 
     const result = await query(
@@ -147,18 +154,28 @@ export const createResource: RequestHandler = async (req, res) => {
        (title, description, content, resource_type, category, tags, url, duration_minutes, is_featured, created_by, status)
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 'published')
        RETURNING id`,
-      [title, description, content, resourceType, category, tags, url, durationMinutes, isFeatured, createdBy]
+      [
+        title,
+        description,
+        content,
+        resourceType,
+        category,
+        tags,
+        url,
+        durationMinutes,
+        isFeatured,
+        createdBy,
+      ],
     );
 
     res.json({
       success: true,
       resourceId: result.rows[0].id,
-      message: 'Resource created successfully'
+      message: "Resource created successfully",
     });
-
   } catch (error) {
-    console.error('Create resource error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Create resource error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -171,23 +188,22 @@ export const updateResource: RequestHandler = async (req, res) => {
     // Build dynamic update query
     const setClause = Object.keys(updateFields)
       .map((key, index) => `${key} = $${index + 2}`)
-      .join(', ');
-    
+      .join(", ");
+
     const values = [resourceId, ...Object.values(updateFields)];
 
     await query(
       `UPDATE resources SET ${setClause}, updated_at = CURRENT_TIMESTAMP WHERE id = $1`,
-      values
+      values,
     );
 
     res.json({
       success: true,
-      message: 'Resource updated successfully'
+      message: "Resource updated successfully",
     });
-
   } catch (error) {
-    console.error('Update resource error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Update resource error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -196,15 +212,14 @@ export const deleteResource: RequestHandler = async (req, res) => {
   try {
     const { resourceId } = req.params;
 
-    await query('DELETE FROM resources WHERE id = $1', [resourceId]);
+    await query("DELETE FROM resources WHERE id = $1", [resourceId]);
 
     res.json({
       success: true,
-      message: 'Resource deleted successfully'
+      message: "Resource deleted successfully",
     });
-
   } catch (error) {
-    console.error('Delete resource error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Delete resource error:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };

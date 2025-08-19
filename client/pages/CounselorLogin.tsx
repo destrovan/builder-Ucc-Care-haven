@@ -80,7 +80,9 @@ export default function CounselorLogin() {
           <div className="flex items-center justify-between">
             {/* Breadcrumb */}
             <div className="flex items-center space-x-2 text-sm text-primary/70">
-              <Link to="/" className="hover:text-primary">Home</Link>
+              <Link to="/" className="hover:text-primary">
+                Home
+              </Link>
               <span>/</span>
               <span className="text-primary font-medium">Counselor Access</span>
             </div>
@@ -90,7 +92,9 @@ export default function CounselorLogin() {
               <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                 <UserCheck className="w-5 h-5 text-primary" />
               </div>
-              <span className="text-primary font-semibold">Counselor Panel</span>
+              <span className="text-primary font-semibold">
+                Counselor Panel
+              </span>
               <div className="px-2 py-1 bg-primary/20 rounded-full">
                 <span className="text-xs text-primary font-medium">ACTIVE</span>
               </div>

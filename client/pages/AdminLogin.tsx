@@ -91,9 +91,13 @@ export default function AdminLogin() {
           <div className="flex items-center justify-between">
             {/* Breadcrumb */}
             <div className="flex items-center space-x-2 text-sm text-trust-teal/70">
-              <Link to="/" className="hover:text-trust-teal">Home</Link>
+              <Link to="/" className="hover:text-trust-teal">
+                Home
+              </Link>
               <span>/</span>
-              <span className="text-trust-teal font-medium">Administrator Access</span>
+              <span className="text-trust-teal font-medium">
+                Administrator Access
+              </span>
             </div>
 
             {/* Panel Indicator */}
@@ -103,7 +107,9 @@ export default function AdminLogin() {
               </div>
               <span className="text-trust-teal font-semibold">Admin Panel</span>
               <div className="px-2 py-1 bg-trust-teal/20 rounded-full">
-                <span className="text-xs text-trust-teal font-medium">ACTIVE</span>
+                <span className="text-xs text-trust-teal font-medium">
+                  ACTIVE
+                </span>
               </div>
             </div>
           </div>

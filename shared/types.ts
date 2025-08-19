@@ -3,8 +3,8 @@
 export interface User {
   id: string;
   email: string;
-  role: 'student' | 'counselor' | 'admin';
-  status: 'active' | 'pending' | 'suspended' | 'inactive';
+  role: "student" | "counselor" | "admin";
+  status: "active" | "pending" | "suspended" | "inactive";
   first_name: string;
   last_name: string;
   created_at: string;
@@ -36,8 +36,8 @@ export interface Report {
   student_id?: string;
   counselor_id?: string;
   is_anonymous: boolean;
-  priority: 'low' | 'medium' | 'high' | 'urgent';
-  status: 'new' | 'in_progress' | 'resolved' | 'closed';
+  priority: "low" | "medium" | "high" | "urgent";
+  status: "new" | "in_progress" | "resolved" | "closed";
   title?: string;
   description: string;
   contact_preference?: string;
@@ -60,7 +60,7 @@ export interface ReportUpdate {
 export interface MoodLog {
   id: string;
   student_id: string;
-  mood_level: 'very_low' | 'low' | 'neutral' | 'good' | 'very_good';
+  mood_level: "very_low" | "low" | "neutral" | "good" | "very_good";
   notes?: string;
   date: string;
   created_at: string;
@@ -71,8 +71,8 @@ export interface JournalEntry {
   student_id: string;
   title?: string;
   content: string;
-  mood_before?: 'very_low' | 'low' | 'neutral' | 'good' | 'very_good';
-  mood_after?: 'very_low' | 'low' | 'neutral' | 'good' | 'very_good';
+  mood_before?: "very_low" | "low" | "neutral" | "good" | "very_good";
+  mood_after?: "very_low" | "low" | "neutral" | "good" | "very_good";
   is_private: boolean;
   created_at: string;
   updated_at: string;
@@ -83,7 +83,7 @@ export interface Resource {
   title: string;
   description?: string;
   content?: string;
-  resource_type: 'article' | 'video' | 'audio' | 'resource';
+  resource_type: "article" | "video" | "audio" | "resource";
   category: string;
   tags: string[];
   url?: string;
@@ -92,7 +92,7 @@ export interface Resource {
   view_count: number;
   rating: number;
   is_featured: boolean;
-  status: 'published' | 'draft' | 'archived';
+  status: "published" | "draft" | "archived";
   created_by?: string;
   created_at: string;
   updated_at: string;
@@ -103,7 +103,7 @@ export interface CounselorCase {
   counselor_id: string;
   report_id: string;
   assigned_at: string;
-  priority_override?: 'low' | 'medium' | 'high' | 'urgent';
+  priority_override?: "low" | "medium" | "high" | "urgent";
   private_notes?: string;
   estimated_sessions?: number;
   is_active: boolean;
@@ -132,7 +132,7 @@ export interface ApiResponse<T = any> {
 
 export interface LoginResponse {
   success: boolean;
-  user: Omit<User, 'password_hash'>;
+  user: Omit<User, "password_hash">;
   message: string;
 }
 
@@ -208,7 +208,7 @@ export interface StudentRegistrationForm {
 }
 
 export interface ReportSubmissionForm {
-  urgency: 'low' | 'medium' | 'high' | 'urgent';
+  urgency: "low" | "medium" | "high" | "urgent";
   description: string;
   contactPreference?: string;
   isAnonymous: boolean;
