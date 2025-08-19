@@ -50,15 +50,39 @@ export default function ResourceHub() {
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Mock data - in real app this would come from API
-  const categories = [
-    { id: "all", name: "All Resources", count: 48 },
-    { id: "anxiety", name: "Anxiety & Stress", count: 12 },
-    { id: "depression", name: "Depression", count: 8 },
-    { id: "academic", name: "Academic Support", count: 15 },
-    { id: "wellness", name: "General Wellness", count: 10 },
-    { id: "crisis", name: "Crisis Resources", count: 3 },
-  ];
+  // Fetch resources from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        // Fetch categories
+        const categoriesResponse = await fetch('/api/resources/categories');
+        const categoriesData = await categoriesResponse.json();
+        if (categoriesData.success) {
+          setCategories(categoriesData.categories);
+        }
+
+        // Fetch resources
+        const params = new URLSearchParams();
+        if (selectedCategory !== 'all') params.append('category', selectedCategory);
+        if (selectedType !== 'all') params.append('type', selectedType);
+        if (searchQuery) params.append('search', searchQuery);
+
+        const resourcesResponse = await fetch(`/api/resources?${params}`);
+        const resourcesData = await resourcesResponse.json();
+        if (resourcesData.success) {
+          setResources(resourcesData.resources);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [selectedCategory, selectedType, searchQuery]);
 
   const resources = [
     {
