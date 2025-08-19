@@ -53,7 +53,7 @@ export default function CounselorLogin() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-hope-green text-white">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground">
                 <Heart className="w-6 h-6" />
               </div>
               <div>
