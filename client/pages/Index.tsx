@@ -209,8 +209,8 @@ export default function Index() {
           </Card>
 
           {/* Admin Access */}
-          <Card className="relative overflow-hidden border-trust-teal/40 hover:border-trust-teal/60 transition-all duration-300 hover:shadow-lg">
-            <div className="absolute top-0 left-0 w-full h-1 bg-trust-teal"></div>
+          <Card className="relative overflow-hidden border-trust-teal/40 hover:border-trust-teal/60 transition-all duration-300 hover:shadow-lg hover:shadow-trust-teal/20 group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-trust-teal group-hover:h-2 transition-all duration-300"></div>
             <CardHeader className="text-center pb-4">
               <div className="w-16 h-16 mx-auto bg-trust-teal/10 rounded-full flex items-center justify-center mb-4">
                 <Settings className="w-8 h-8 text-trust-teal" />
