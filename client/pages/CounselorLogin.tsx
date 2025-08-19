@@ -75,24 +75,24 @@ export default function CounselorLogin() {
       </header>
 
       {/* Selected Panel Indicator */}
-      <div className="bg-hope-green/10 border-b border-hope-green/20">
+      <div className="bg-primary/10 border-b border-primary/20">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Breadcrumb */}
-            <div className="flex items-center space-x-2 text-sm text-hope-green/70">
-              <Link to="/" className="hover:text-hope-green">Home</Link>
+            <div className="flex items-center space-x-2 text-sm text-primary/70">
+              <Link to="/" className="hover:text-primary">Home</Link>
               <span>/</span>
-              <span className="text-hope-green font-medium">Counselor Access</span>
+              <span className="text-primary font-medium">Counselor Access</span>
             </div>
 
             {/* Panel Indicator */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-hope-green/20 flex items-center justify-center">
-                <UserCheck className="w-5 h-5 text-hope-green" />
+              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <UserCheck className="w-5 h-5 text-primary" />
               </div>
-              <span className="text-hope-green font-semibold">Counselor Panel</span>
-              <div className="px-2 py-1 bg-hope-green/20 rounded-full">
-                <span className="text-xs text-hope-green font-medium">ACTIVE</span>
+              <span className="text-primary font-semibold">Counselor Panel</span>
+              <div className="px-2 py-1 bg-primary/20 rounded-full">
+                <span className="text-xs text-primary font-medium">ACTIVE</span>
               </div>
             </div>
           </div>
