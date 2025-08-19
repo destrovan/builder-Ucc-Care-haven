@@ -110,8 +110,8 @@ export default function Index() {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Student Access */}
-          <Card className="relative overflow-hidden border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg">
-            <div className="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+          <Card className="relative overflow-hidden border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-primary group-hover:h-2 transition-all duration-300"></div>
             <CardHeader className="text-center pb-4">
               <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <User className="w-8 h-8 text-primary" />
